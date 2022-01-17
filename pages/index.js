@@ -1,8 +1,8 @@
-import Head from 'next/head'
-import {PostCard, Container, Sidebar, Grid, MainContent} from '../components'
-import {getPosts} from '../requests'
+import Head from "next/head";
+import { PostCard, Container, Sidebar, Grid, MainContent } from "../components";
+import { getPosts } from "../requests";
 
-export default function Home({posts}) {
+export default function Home({ posts }) {
   return (
     <Container>
       <Head>
@@ -11,20 +11,20 @@ export default function Home({posts}) {
       </Head>
       <Grid>
         <MainContent>
-          {
-            posts.map((post) => (<PostCard post={post.node} key={post.node.title}/>))
-          }
+          {posts.map((post) => (
+            <PostCard post={post.node} key={post.node.title} />
+          ))}
         </MainContent>
-        <Sidebar/>
+        <Sidebar />
       </Grid>
     </Container>
-  )
+  );
 }
 
 export async function getStaticProps() {
   const posts = (await getPosts()) || [];
 
   return {
-    props: {posts}
-  }
+    props: { posts },
+  };
 }

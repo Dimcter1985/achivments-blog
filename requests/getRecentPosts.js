@@ -1,5 +1,5 @@
 import { request, gql } from "graphql-request";
-import { graphqlAPI } from '../consts'
+import { graphqlAPI } from "../consts";
 
 export const getRecentPosts = async () => {
   const query = gql`

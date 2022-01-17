@@ -1,12 +1,10 @@
 import { request, gql } from "graphql-request";
-import { graphqlAPI } from '../consts'
+import { graphqlAPI } from "../consts";
 
 export const getPosts = async () => {
   const query = gql`
     query getPosts {
-      postsConnection(
-        orderBy: createdAt_DESC
-      ) {
+      postsConnection(orderBy: createdAt_DESC) {
         edges {
           node {
             author {
@@ -31,9 +29,9 @@ export const getPosts = async () => {
         }
       }
     }
-  `
+  `;
 
   const result = await request(graphqlAPI, query);
 
   return result.postsConnection.edges;
-}
+};

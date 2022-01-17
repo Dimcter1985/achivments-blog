@@ -1,16 +1,30 @@
-import { GraphQLClient, gql } from 'graphql-request';
-import { graphqlAPI } from '../consts'
+import { GraphQLClient, gql } from "graphql-request";
+import { graphqlAPI } from "../../consts";
 
 export default async function asynchandler(req, res) {
-  const graphQLClient = new GraphQLClient((graphqlAPI), {
+  const graphQLClient = new GraphQLClient(graphqlAPI, {
     headers: {
       authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
     },
   });
 
   const query = gql`
-    mutation CreateComment($name: String!, $email: String!, $comment: String!, $slug: String!) {
-      createComment(data: {name: $name, email: $email, comment: $comment, post: {connect: {slug: $slug}}}) { id }
+    mutation CreateComment(
+      $name: String!
+      $email: String!
+      $comment: String!
+      $slug: String!
+    ) {
+      createComment(
+        data: {
+          name: $name
+          email: $email
+          comment: $comment
+          post: { connect: { slug: $slug } }
+        }
+      ) {
+        id
+      }
     }
   `;
 

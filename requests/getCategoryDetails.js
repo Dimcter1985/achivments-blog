@@ -1,20 +1,21 @@
 import { request, gql } from "graphql-request";
-import { graphqlAPI } from '../consts'
+import { graphqlAPI } from "../consts";
 
 export const getCategoryDetails = async (slug) => {
   const query = gql`
-    query getCategoryDetails($slug : String!) {
-      category(where: {slug: $slug}) {
+    query getCategoryDetails($slug: String!) {
+      category(where: { slug: $slug }) {
         name
         slug
         posts {
+          slug
           createdAt
           title
           excerpt
           image {
             url
           }
-          author{
+          author {
             name
             bio
             photo {

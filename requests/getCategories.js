@@ -1,13 +1,13 @@
 import { request, gql } from "graphql-request";
-import { graphqlAPI } from '../consts'
+import { graphqlAPI } from "../consts";
 
 export const getCategories = async () => {
   const query = gql`
     query GetCategories {
-        categories {
-          name
-          slug
-        }
+      categories {
+        name
+        slug
+      }
     }
   `;
 
