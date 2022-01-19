@@ -12,7 +12,6 @@ import {
 } from "../../components";
 
 const Post = ({ post }) => {
-
   return (
     <Container>
       <Grid>

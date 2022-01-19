@@ -29,7 +29,7 @@ const PostWidget = ({ categories, slug }) => {
             <img
               src={post.image ? post.image.url : "../skam-image.jpg"}
               alt={post.title}
-              className="object-top absolute h-full w-full object-cover  shadow-lg rounded-full"
+              className="object-top absolute h-full w-full object-cover shadow-lg rounded-full"
             />
           </div>
           <div className="flex-grow ml-4">
