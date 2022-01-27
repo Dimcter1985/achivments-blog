@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from 'next/router';
 import { getPosts, getPostDetails } from "../../requests";
 import {
   Container,
@@ -12,6 +13,11 @@ import {
 } from "../../components";
 
 const Post = ({ post }) => {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
   return (
     <Container>
       <Grid>
@@ -44,6 +50,6 @@ export async function getStaticPaths() {
   const posts = await getPosts();
   return {
     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
-    fallback: true,
+    fallback: false,
   };
 }
