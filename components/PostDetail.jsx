@@ -1,23 +1,29 @@
 import React from "react";
 import moment from "moment";
+import Image from "next/image";
+import defaultPic from '../public/skam-image.jpg';
 
 const PostDetail = ({ post }) => {
   return (
     <>
       <div className="bg-white bg-opacity-70 shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
-        <div className="relative overflow-hidden shadow-md mb-6">
-          <img
-            src={post.image ? post.image.url : "../skam-image.jpg"}
+        <div className="relative overflow-hidden shadow-md pb-80 mb-6">
+          <Image
+            src={post.image ? post.image.url : defaultPic}
             alt={post.name}
-            className="object-top h-full w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg"
+            unoptimized
+            layout="fill"
+            priority
+            className="object-top absolute h-80 w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg"
           />
         </div>
         <div className="px-4 lg:px-0">
           <div className="flex items-center mb-8 w-full">
             <div className="hidden md:flex items-center justify-center lg:mb-0 lg:w-auto mr-8">
-              <img
+              <Image
                 alt={post.author.name}
                 height="30px"
+                unoptimized
                 width="30px"
                 className="align-middle rounded-full"
                 src={post.author.photo.url}

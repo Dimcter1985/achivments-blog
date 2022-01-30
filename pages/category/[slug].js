@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouter } from 'next/router';
 import {
   Container,
   Grid,
@@ -10,7 +9,6 @@ import {
 import { getCategories, getCategoryDetails } from "../../requests";
 
 const Category = ({ category }) => {
-  const router = useRouter()
 
   return (
     <Container>

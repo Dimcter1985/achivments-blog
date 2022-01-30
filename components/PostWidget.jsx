@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import Link from "next/link";
+import Image from "next/image";
+import defaultPic from '../public/skam-image.jpg';
 import { getRecentPosts, getSimilarPosts } from "../requests";
 
 const PostWidget = ({ categories, slug }) => {
@@ -25,10 +27,12 @@ const PostWidget = ({ categories, slug }) => {
       </h3>
       {relatedPosts.map((post, index) => (
         <div key={index} className="flex items-center w-full mb-4">
-          <div className="w-14 h-14 flex-none relative">
-            <img
-              src={post.image ? post.image.url : "../skam-image.jpg"}
+          <div className="w-14 h-14 flex-none relative rounded-full">
+            <Image
+              src={post.image ? post.image.url : defaultPic}
               alt={post.title}
+              unoptimized
+              layout="fill"
               className="object-top absolute h-full w-full object-cover shadow-lg rounded-full"
             />
           </div>
